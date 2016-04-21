@@ -7,20 +7,17 @@ function root(args) {
 }
 
 const webpack = require('webpack');
-const helpers = require('./helpers');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 module.exports = {
   entry: {
-    'vendor': './src/vendors.ts',
-    'main': './src/main.browser.ts'
+    vendor: './src/vendors.ts',
+    main: './src/main.browser.ts'
   },
   resolve: {
     extensions: ['', '.ts', '.js'],
-    // Make sure root is src
-    root: helpers.root('src'),
+    root: root('src'),
     modulesDirectories: ['node_modules']
   },
   module: {
@@ -30,8 +27,7 @@ module.exports = {
         loader: 'source-map-loader',
         exclude: [
           // these packages have problems with their sourcemaps
-          helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular2-material')
+          root('node_modules/rxjs')
         ]
       }
 
@@ -53,7 +49,7 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'raw-loader',
-        exclude: [helpers.root('src/index.html')]
+        exclude: [root('src/index.html')]
       }
     ]
   },
@@ -61,15 +57,11 @@ module.exports = {
     new ForkCheckerPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor'])
+      name: 'vendor'
     }),
-    new CopyWebpackPlugin([{
-      from: 'src/assets',
-      to: 'assets'
-    }]),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunksSortMode: helpers.packageSort(['vendor', 'main'])
+      chunksSortMode: ['vendor', 'main']
     })
   ],
   node: {

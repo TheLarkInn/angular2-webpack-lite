@@ -4,8 +4,7 @@
   "description": "Angular2 Webpack Lite Boilerplate",
   "main": "index.ts",
   "scripts": {
-    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
-    "postinstall": "npm run typings -- install"
+    "build": "webpack --progress --profile --colors --display-error-details --display-cached"
   },
   "repository": {
     "type": "git",
@@ -72,7 +71,7 @@
     "typescript": "~1.8.9",
     "typings": "^0.7.12",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.14",
+    "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "^0.8.4"
