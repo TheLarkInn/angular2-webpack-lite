@@ -44,8 +44,8 @@ export const APPLICATION_DIRECTIVES = [
 /*
   These are the 3 exported constants we will add to our bootstrap in our main file.
 */
-export const ENV_PROVIDERS [
-  ...ENV_PROVIDERS
+export const ENV_PROVIDERS = [
+  ...ENVIRONMENT_PROVIDERS
 ]
 
 export const PROVIDERS = [

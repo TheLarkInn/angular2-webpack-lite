@@ -8,4 +8,4 @@ bootstrap(App, [
 	...DIRECTIVES,
 	...PIPES,
 	...APP_PROVIDERS
-]).catch(err => console.error(errr));
+]).catch(console.error)

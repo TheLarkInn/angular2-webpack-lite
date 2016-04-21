@@ -15,6 +15,12 @@ module.exports = {
     vendor: './src/vendors.ts',
     main: './src/main.browser.ts'
   },
+  output: {
+	path: root('dist'),
+	filename: '[name].bundle.js',
+	sourceMapFilename: '[name].map',
+	chunkFilename: '[id].chunk.js'
+  },
   resolve: {
     extensions: ['', '.ts', '.js'],
     root: root('src'),
@@ -60,8 +66,7 @@ module.exports = {
       name: 'vendor'
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      chunksSortMode: ['vendor', 'main']
+      template: 'src/index.html'
     })
   ],
   node: {

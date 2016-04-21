@@ -4,7 +4,8 @@
   "description": "Angular2 Webpack Lite Boilerplate",
   "main": "index.ts",
   "scripts": {
-    "build": "webpack --progress --profile --colors --display-error-details --display-cached"
+    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "server:dev":"webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/"
   },
   "repository": {
     "type": "git",
