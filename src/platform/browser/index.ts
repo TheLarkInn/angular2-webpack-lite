@@ -1,8 +1,17 @@
-import {provide, PLATFORM_DIRECTIVES, PLATFORM_PIPES} from 'angular2/core';
 import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {FORM_PROVIDERS} from 'angular2/common';
-import {HTTP_PROVIDERS, JSONP_PROVIDERS} from 'angular2/http';
 import {ELEMENT_PROBE_PROVIDERS /*,ELEMENT_PROBE_PROVIDERS_PROD_MODE*/} from 'angular2/platform/browser';
+import {provide, PLATFORM_DIRECTIVES, PLATFORM_PIPES} from 'angular2/core';
+import {HTTP_PROVIDERS, JSONP_PROVIDERS} from 'angular2/http';
+import {FORM_PROVIDERS} from 'angular2/common';
+import {EVENT_MANAGER_PLUGINS} from 'angular2/platform/common_dom';
+import {DOMOutsideEventPlugin} from './util';
+
+/*
+  Add custom event plugins here.
+*/
+export const EVENT_PLUGINS = [
+  DOMOutsideEventPlugin
+]
 
 
 
@@ -60,7 +69,9 @@ export const DIRECTIVES = [
   provide(PLATFORM_DIRECTIVES, { multi: true, useValue: APPLICATION_DIRECTIVES })
 ];
 
-
+export const PLUGINS = [
+  provide(EVENT_MANAGER_PLUGINS, { multi: true, useClass: DOMOutsideEventPlugin})
+];
 
 
 
