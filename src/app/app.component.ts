@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 
-import {AppState} from './app-state.service.ts';
+import {AppState} from './app_state.service.ts';
 
 @Component({
 	selector: 'app',
@@ -8,7 +8,7 @@ import {AppState} from './app-state.service.ts';
 	providers: [],
 	directives: [],
 	styles: [],
-	template: `<div>Hello World</div>` 
+	template: `<div>Hello World</div>`
 })
 export class App {
 	onLoadWelcomeMessage: string = `Hello ngConf! I'm logging on ngOnInit()`;
