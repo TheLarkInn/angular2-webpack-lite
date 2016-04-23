@@ -9,7 +9,7 @@ import {AppState} from './app_state.service.ts';
 	styles: [],
 	template: `
     <div>
-      <div>OUTSIDE OF HEADER</div>
+      <div (mouseenter,mouseleave)="mouseEventsHappening($event)">OUTSIDE OF HEADER</div>
       <h1 (clickOutside)='clickedOutsideHeader($event)' (click)='handleClick($event)' style='border: 1px black solid; display: inline;'>Hello World</h1>
     </div>
   `
@@ -30,6 +30,10 @@ export class App {
 
   handleClickOutisde(event) {
     console.log("handleClickOutside", event);
+  }
+
+  mouseEventsHappening(event) {
+    console.log(`MOUSE EVENT WITH TYPE: ${event.type}`);
   }
 
 	ngOnInit() {

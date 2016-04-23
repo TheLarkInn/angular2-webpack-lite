@@ -16,10 +16,10 @@ module.exports = {
     main: './src/main.browser.ts'
   },
   output: {
-	path: root('dist'),
-	filename: '[name].bundle.js',
-	sourceMapFilename: '[name].map',
-	chunkFilename: '[id].chunk.js'
+    path: root('dist'),
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
+    chunkFilename: '[id].chunk.js'
   },
   resolve: {
     extensions: ['', '.ts', '.js'],
@@ -27,8 +27,7 @@ module.exports = {
     modulesDirectories: ['node_modules']
   },
   module: {
-    preLoaders: [
-      {
+    preLoaders: [{
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: [
@@ -38,26 +37,21 @@ module.exports = {
       }
 
     ],
-    loaders: [
-      {
-        test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
-        exclude: [/\.(spec|e2e)\.ts$/]
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'raw-loader'
-      },
-      {
-        test: /\.html$/,
-        loader: 'raw-loader',
-        exclude: [root('src/index.html')]
-      }
-    ]
+    loaders: [{
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader',
+      exclude: [/\.(spec|e2e)\.ts$/]
+    }, {
+      test: /\.json$/,
+      loader: 'json-loader'
+    }, {
+      test: /\.css$/,
+      loader: 'raw-loader'
+    }, {
+      test: /\.html$/,
+      loader: 'raw-loader',
+      exclude: [root('src/index.html')]
+    }]
   },
   plugins: [
     new ForkCheckerPlugin(),

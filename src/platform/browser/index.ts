@@ -4,16 +4,15 @@ import {provide, PLATFORM_DIRECTIVES, PLATFORM_PIPES} from 'angular2/core';
 import {HTTP_PROVIDERS, JSONP_PROVIDERS} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {EVENT_MANAGER_PLUGINS} from 'angular2/platform/common_dom';
-import {DOMOutsideEventPlugin} from './util';
+import {DOMOutsideEventPlugin, MultiEventPlugin} from './util';
 
 /*
   Add custom event plugins here.
 */
 export const EVENT_PLUGINS = [
-  DOMOutsideEventPlugin
+  DOMOutsideEventPlugin,
+  MultiEventPlugin
 ]
-
-
 
 /*
   Add custom env providers here.
@@ -70,6 +69,7 @@ export const DIRECTIVES = [
 ];
 
 export const PLUGINS = [
+  provide(EVENT_MANAGER_PLUGINS, { multi: true, useClass: MultiEventPlugin}),
   provide(EVENT_MANAGER_PLUGINS, { multi: true, useClass: DOMOutsideEventPlugin})
 ];
 
