@@ -26,7 +26,7 @@ export class MultiEventPlugin extends DomEventsPlugin {
     // Executed outside of angular so that change detection is not constantly triggered.
     var addAndRemoveHostListenersForOutsideEvents = () => {
       eventsArray.forEach((singleEventName: string) => {
-        DOM.onAndCancel(element, singleEventName, outsideHandler);
+        this.manager.addEventListener(element, singleEventName, outsideHandler);
       });
     }
 
@@ -34,14 +34,13 @@ export class MultiEventPlugin extends DomEventsPlugin {
   }
 
   addGlobalEventListener(target: string, eventName: string, handler: Function): Function {
-    var element = DOM.getGlobalEventTarget(target);
     var zone = this.manager.getZone();
     var eventsArray = this.getMultiEventArray(eventName);
     var outsideHandler = (event) => zone.run(() => handler(event));
 
     return this.manager.getZone().runOutsideAngular(() => {
       eventsArray.forEach((singleEventName: string) => {
-        DOM.onAndCancel(element, singleEventName, outsideHandler);
+        this.manager.addGlobalEventListener(target, singleEventName, outsideHandler);
       })
     });
   }

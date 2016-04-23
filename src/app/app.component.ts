@@ -9,7 +9,7 @@ import {AppState} from './app_state.service.ts';
 	styles: [],
 	template: `
     <div>
-      <div (mouseenter,mouseleave)="mouseEventsHappening($event)">OUTSIDE OF HEADER</div>
+      <div (clickOutside,mouseenter,mouseleave)="mouseEventsHappening($event)">OUTSIDE OF HEADER</div>
       <h1 (clickOutside)='clickedOutsideHeader($event)' (click)='handleClick($event)' style='border: 1px black solid; display: inline;'>Hello World</h1>
     </div>
   `
