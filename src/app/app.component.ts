@@ -9,7 +9,7 @@ import {AppState} from './app_state.service.ts';
 	styles: [],
 	template: `
     <div>
-      <div (clickOutside,mouseenter,mouseleave)="mouseEventsHappening($event)">OUTSIDE OF HEADER</div>
+      <div (clickOutside,mouseenter,mouseleave)="onClickOutsideOnMouseEntereOnMouseLeave($event)">OUTSIDE OF HEADER</div>
       <h1 (clickOutside)='clickedOutsideHeader($event)' (click)='handleClick($event)' style='border: 1px black solid; display: inline;'>Hello World</h1>
     </div>
   `
@@ -17,6 +17,7 @@ import {AppState} from './app_state.service.ts';
 export class App {
 	onLoadWelcomeMessage: string = `Hello ngConf! I'm logging on ngOnInit()`;
 	name: string = 'Angular2 Webpack Lite';
+
 
 	constructor(public appState: AppState) {}
 
@@ -32,8 +33,8 @@ export class App {
     console.log("handleClickOutside", event);
   }
 
-  mouseEventsHappening(event) {
-    console.log(`MOUSE EVENT WITH TYPE: ${event.type}`);
+  onClickOutsideOnMouseEntereOnMouseLeave(event) {
+    console.log("Event Triggered with event name: ", event);
   }
 
 	ngOnInit() {

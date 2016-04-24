@@ -1,17 +1,15 @@
-import {DomEventsPlugin} from 'angular2/platform/common_dom';
-// Have to pull DOM from src because platform/common_dom returns DOM as null.
-// I believe its a TS bug.
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+import {EventManagerPlugin} from 'angular2/platform/common_dom';
 import {Injectable} from 'angular2/core';
 
 @Injectable()
-export class MultiEventPlugin extends DomEventsPlugin {
+export class MultiEventPlugin extends EventManagerPlugin {
   getMultiEventArray(eventName: string): string[] {
-    return eventName.split(',').map((item) => { return item.trim() });
+    return eventName.split(",")
+      .filter((item, index): boolean => { return item && item != '' })
   }
 
   supports(eventName: string): boolean {
-    return eventName.split("").indexOf(',') > -1;
+    return this.getMultiEventArray(eventName).length > 1;
   }
 
   addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
@@ -20,7 +18,7 @@ export class MultiEventPlugin extends DomEventsPlugin {
 
     // Entering back into angular to trigger changeDetection
     var outsideHandler = (event) => {
-        zone.run(() => handler(event))
+      zone.run(() => handler(event));
     };
 
     // Executed outside of angular so that change detection is not constantly triggered.
