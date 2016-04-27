@@ -1,9 +1,9 @@
 import {provide, PLATFORM_DIRECTIVES, PLATFORM_PIPES} from 'angular2/core';
-import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {HTTP_PROVIDERS, JSONP_PROVIDERS} from 'angular2/http';
 import {ELEMENT_PROBE_PROVIDERS /*,ELEMENT_PROBE_PROVIDERS_PROD_MODE*/} from 'angular2/platform/browser';
-
+import {LocationStrategy, HashLocationStrategy, Location} from 'angular2/platform/common';
 
 
 /*
@@ -37,8 +37,6 @@ export const APPLICATION_PIPES = [
 export const APPLICATION_DIRECTIVES = [
   ...ROUTER_DIRECTIVES
 ];
-
-
 
 
 /*
