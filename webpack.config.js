@@ -16,10 +16,10 @@ module.exports = {
     main: './src/main.browser.ts'
   },
   output: {
-	path: root('dist'),
-	filename: '[name].bundle.js',
-	sourceMapFilename: '[name].map',
-	chunkFilename: '[id].chunk.js'
+  	path: 'dist/',
+  	filename: '[name].bundle.js',
+  	sourceMapFilename: '[name].map',
+  	chunkFilename: '[id].chunk.js'
   },
   resolve: {
     extensions: ['', '.ts', '.js'],
