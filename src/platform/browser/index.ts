@@ -1,9 +1,9 @@
-import {provide, PLATFORM_DIRECTIVES, PLATFORM_PIPES} from 'angular2/core';
-import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
-import {FORM_PROVIDERS} from 'angular2/common';
-import {HTTP_PROVIDERS, JSONP_PROVIDERS} from 'angular2/http';
-import {ELEMENT_PROBE_PROVIDERS /*,ELEMENT_PROBE_PROVIDERS_PROD_MODE*/} from 'angular2/platform/browser';
-import {LocationStrategy, HashLocationStrategy, Location} from 'angular2/platform/common';
+import {provide, PLATFORM_DIRECTIVES, PLATFORM_PIPES} from '@angular/core';
+import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import {FORM_PROVIDERS} from '@angular/common';
+import {HTTP_PROVIDERS, JSONP_PROVIDERS} from '@angular/http';
+import {ELEMENT_PROBE_PROVIDERS /*,ELEMENT_PROBE_PROVIDERS_PROD_MODE*/} from '@angular/platform-browser';
+import {LocationStrategy, HashLocationStrategy, Location} from '@angular/common';
 
 
 /*
