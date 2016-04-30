@@ -19,7 +19,9 @@ module.exports = {
   	path: 'dist/',
   	filename: '[name].bundle.js',
   	sourceMapFilename: '[name].map',
-  	chunkFilename: '[id].chunk.js'
+  	chunkFilename: '[id].chunk.js',
+    library: '[name]',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['', '.ts', '.js'],
