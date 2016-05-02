@@ -1,79 +1,67 @@
+var webpack = require('webpack');
 var path = require('path');
-var _root = path.resolve(__dirname, '..');
-
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [_root].concat(args));
-}
-
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 module.exports = {
   entry: {
-    vendor: './src/vendors.ts',
-    main: './src/main.browser.ts'
+    browser: './src/main.browser.ts',
   },
   output: {
-  	path: 'dist/',
-  	filename: '[name].bundle.js',
-  	sourceMapFilename: '[name].map',
-  	chunkFilename: '[id].chunk.js'
-  },
-  resolve: {
-    extensions: ['', '.ts', '.js'],
-    root: root('src'),
-    modulesDirectories: ['node_modules']
+    path: './dist/',
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].bundle.map',
+    chunkFilename: '[name].chunk.js'
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        loader: 'source-map-loader',
-        exclude: [
-          // these packages have problems with their sourcemaps
-          root('node_modules/rxjs')
-        ]
-      }
-
-    ],
     loaders: [
-      {
-        test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
-        exclude: [/\.(spec|e2e)\.ts$/]
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'raw-loader'
-      },
-      {
-        test: /\.html$/,
-        loader: 'raw-loader',
-        exclude: [root('src/index.html')]
-      }
+      // .ts files for TypeScript
+      { test: /\.ts$/, loader: 'babel!ts-loader' }
     ]
   },
   plugins: [
-    new ForkCheckerPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(true),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+    new webpack.optimize.UglifyJsPlugin({
+      // beautify: true, //debug
+      // mangle: false, //debug
+      // dead_code: false, //debug
+      // unused: false, //debug
+      // deadCode: false, //debug
+      // compress: {
+      //   screw_ie8: true,
+      //   keep_fnames: true,
+      //   drop_debugger: false,
+      //   dead_code: false,
+      //   unused: false
+      // }, // debug
+      // comments: true, //debug
+
+      beautify: false, //prod
+
+      mangle: {
+        screw_ie8 : true,
+        keep_fnames: true
+      }, //prod
+
+      compress: {
+        keep_fnames: true,
+        drop_debugger: false,
+        dead_code: false,
+        unused: false,
+        screw_ie8: true
+      }, //prod
+
+      comments: false //prod
     }),
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    })
   ],
-  node: {
-    global: 'window',
-    crypto: 'empty',
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
-  }
-}
+  cache: false,
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['', 'component.ts', '.ts', '.js'],
+
+    // alias: {
+    //   '@angular/core': path.resolve(__dirname, 'node_modules/@angular/core/esm/core.js'),
+    //   '@angular/platform-browser': path.resolve(__dirname, 'node_modules/@angular/platform-browser/esm/platform_browser.js'),
+    //   '@angular/router': path.resolve(__dirname, 'node_modules/@angular/router/esm/router.js'),
+    //   '@angular/http': path.resolve(__dirname, 'node_modules/@angular/http/esm/http.js')
+    // },
+  },
+
+};

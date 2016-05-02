@@ -1,72 +1,36 @@
 {
-  "name": "angular2-webpack-lite",
+  "name": "new-world-test",
   "version": "1.0.0",
-  "description": "Angular2 Webpack Lite Boilerplate",
-  "main": "index.ts",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "typings":"typings",
-    "postinstall":"npm run typings -- install",
-    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
-    "server:dev":"webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/"
+    "build": "webpack --watch --colors --progress"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheLarkInn/angular2-webpack-lite.git"
-  },
-  "author": "Sean Larkin",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TheLarkInn/angular2-webpack-lite/issues"
-  },
-  "homepage": "https://github.com/TheLarkInn/angular2-webpack-lite#readme",
-  "engines": {
-    "node": ">= 4.2.1",
-    "npm": ">= 3"
+  "devDependencies": {
+    "awesome-typescript-loader": "^0.17.0",
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015-native-modules": "^6.6.0",
+    "rollup": "^0.26.0",
+    "rollup-plugin-node-resolve": "^1.5.0",
+    "rxjs-es": "^5.0.0-beta.2",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.9.0-dev.20160426",
+    "webpack": "2.1.0-beta.6"
   },
   "dependencies": {
-    "@angular/common": "0.0.0-5",
-    "@angular/compiler": "0.0.0-5",
-    "@angular/core": "0.0.0-5",
-    "@angular/router": "0.0.0-5",
-    "@angular/http": "0.0.0-5",
-    "@angular/platform-browser": "0.0.0-5",
-    "@angular/platform-browser-dynamic": "0.0.0-5",
-    "core-js": "^2.2.2",
-    "normalize.css": "^4.1.1",
-    "rxjs": "5.0.0-beta.7",
-    "zone.js": "~0.6.11"
-  },
-  "devDependencies": {
-    "angular2-hmr": "~0.5.5",
-    "awesome-typescript-loader": "~0.17.0",
-    "compression-webpack-plugin": "^0.3.1",
-    "copy-webpack-plugin": "^2.1.3",
-    "css-loader": "^0.23.1",
-    "es6-promise": "^3.1.2",
-    "es6-promise-loader": "^1.0.1",
-    "es6-shim": "^0.35.0",
-    "es7-reflect-metadata": "^1.6.0",
-    "exports-loader": "^0.6.3",
-    "expose-loader": "^0.7.1",
-    "file-loader": "^0.8.5",
-    "html-webpack-plugin": "^2.15.0",
-    "http-server": "^0.9.0",
-    "imports-loader": "^0.6.5",
-    "json-loader": "^0.5.4",
-    "raw-loader": "0.5.1",
-    "source-map-loader": "^0.1.5",
-    "style-loader": "^0.13.1",
-    "ts-helpers": "1.1.1",
-    "ts-node": "^0.7.1",
-    "tslint": "^3.7.1",
-    "tslint-loader": "^2.1.3",
-    "typedoc": "^0.3.12",
-    "typescript": "~1.8.9",
-    "typings": "^0.8.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-md5-hash": "^0.0.5",
-    "webpack-merge": "^0.12.0"
+    "@angular/common": "0.0.0-4",
+    "@angular/router": "0.0.0-4",
+    "@angular/compiler": "0.0.0-4",
+    "@angular/core": "0.0.0-4",
+    "@angular/platform-browser": "0.0.0-4",
+    "@angular/platform-browser-dynamic": "0.0.0-4",
+    "@angular/http": "0.0.0-4",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.2",
+    "rxjs-es": "5.0.0-beta.2",
+    "zone.js": "^0.6.12"
   }
 }

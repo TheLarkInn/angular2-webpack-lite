@@ -1,11 +1,20 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
-import {DIRECTIVES, PIPES, PROVIDERS, ENV_PROVIDERS} from './platform/browser';
-import {App, APP_PROVIDERS} from './app';
+import {
+	APPLICATION_DIRECTIVES, 
+	APPLICATION_PIPES, 
+	ENV_PROVIDERS, 
+	PROVIDERS, 
+	PIPES, 
+	DIRECTIVES
+} from './platform/browser';
 
-bootstrap(App, [
-	...PROVIDERS,
-	...ENV_PROVIDERS,
-	...DIRECTIVES,
-	...PIPES,
-	...APP_PROVIDERS
-]).catch(console.error)
+import {AppComponent} from './app/';
+
+bootstrap(AppComponent, [
+	APPLICATION_DIRECTIVES, 
+	APPLICATION_PIPES, 
+	ENV_PROVIDERS, 
+	PROVIDERS, 
+	PIPES, 
+	DIRECTIVES
+]).catch(console.error);
