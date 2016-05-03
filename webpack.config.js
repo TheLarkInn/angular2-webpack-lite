@@ -1,9 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    browser: './src/main.browser.ts',
+    vendors: './src/vendors.ts',
+    browser: './src/main.browser.ts'
   },
   output: {
     path: './dist/',
@@ -14,54 +16,42 @@ module.exports = {
   module: {
     loaders: [
       // .ts files for TypeScript
-      { test: /\.ts$/, loader: 'babel!ts-loader' }
+      {
+        test: /\.ts$/,
+        loader: 'babel-loader!ts-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      }
     ]
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
-      // beautify: true, //debug
-      // mangle: false, //debug
-      // dead_code: false, //debug
-      // unused: false, //debug
-      // deadCode: false, //debug
-      // compress: {
-      //   screw_ie8: true,
-      //   keep_fnames: true,
-      //   drop_debugger: false,
-      //   dead_code: false,
-      //   unused: false
-      // }, // debug
-      // comments: true, //debug
-
-      beautify: false, //prod
-
+      beautify: false,
       mangle: {
         screw_ie8 : true,
         keep_fnames: true
-      }, //prod
-
+      },
       compress: {
         keep_fnames: true,
         drop_debugger: false,
         dead_code: false,
         unused: false,
         screw_ie8: true
-      }, //prod
-
-      comments: false //prod
+      },
+      comments: false
     }),
+    new HtmlWebpackPlugin({
+      template:'./src/index.html',
+      chunksSortMode: function(firstChunk, secondChunk) {
+        return firstChunk.id < secondChunk.id;
+      }
+    })
   ],
   cache: false,
   devtool: 'source-map',
   resolve: {
     extensions: ['', 'component.ts', '.ts', '.js'],
-
-    // alias: {
-    //   '@angular/core': path.resolve(__dirname, 'node_modules/@angular/core/esm/core.js'),
-    //   '@angular/platform-browser': path.resolve(__dirname, 'node_modules/@angular/platform-browser/esm/platform_browser.js'),
-    //   '@angular/router': path.resolve(__dirname, 'node_modules/@angular/router/esm/router.js'),
-    //   '@angular/http': path.resolve(__dirname, 'node_modules/@angular/http/esm/http.js')
-    // },
   },
-
 };
