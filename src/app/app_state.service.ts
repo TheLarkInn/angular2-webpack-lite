@@ -5,7 +5,7 @@ export class AppState {
   _state = {};
 
   constructor() {}
-  
+
   // already return a clone of the current state
   get state() {
     return this._state = this._clone(this._state);
@@ -25,10 +25,8 @@ export class AppState {
     return this._state[prop] = value;
   }
 
-
   _clone(object) {
     return JSON.parse(JSON.stringify( object ));
   }
-
 
 }

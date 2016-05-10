@@ -26,6 +26,11 @@ module.exports = {
     root: root('src'),
     modulesDirectories: ['node_modules']
   },
+  resolveLoader: {
+    alias: {
+      'ngc-loader': require('./ngc-loader.js')
+    }
+  },
   module: {
     preLoaders: [
       {
@@ -41,7 +46,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loader: 'awesome-typescript-loader!ngc-loader',
         exclude: [/\.(spec|e2e)\.ts$/]
       },
       {
