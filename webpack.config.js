@@ -9,9 +9,13 @@ module.exports = {
   },
   output: {
     path: './dist/',
-    filename: '[name].bundle.js',
-    sourceMapFilename: '[name].bundle.map',
-    chunkFilename: '[name].chunk.js'
+    filename: '[name].[chunkhash].js',
+    sourceMapFilename: '[name].[chunkhash].map',
+    chunkFilename: '[chunkhash].js'
+  },
+  recordsPath: path.join(__dirname, "records.json"),
+  ts: {
+    compiler: '@angular/tsc-wrapped'
   },
   module: {
     loaders: [
@@ -31,6 +35,15 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['browser', 'vendors']
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      minChunks: Infinity,
+      name: 'inline',
+      filename: 'inline.js',
+      sourceMapFilename: 'inline.map'
+    }),
     new HtmlWebpackPlugin({
       template:'./src/index.html',
       chunksSortMode: "dependency"

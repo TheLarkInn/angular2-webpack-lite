@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "@angular/compiler-cli": "^0.2.0",
+    "@angular/tsc-wrapped": "^0.1.0",
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "^0.19.0",
     "babel-core": "^6.7.7",
@@ -24,7 +25,8 @@
     "rxjs-es": "^5.0.0-beta.2",
     "ts-loader": "^0.8.2",
     "typescript": "^1.9.0-dev.20160426",
-    "webpack": "^2.1.0-beta.13"
+    "webpack": "^2.1.0-beta.13",
+    "webpack-cluster": "^1.1.1"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.1",
